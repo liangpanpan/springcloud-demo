@@ -1,5 +1,6 @@
+# 如果nacos中配置了端口，会覆盖掉本地的配置
 server:
-  port: 8080
+  port: 8090
 
 
 testValue: 1112233
