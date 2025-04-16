@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+
+testValue: 1112233
+# 优先加载配置文件的时候， dataid会优先使用prefile 参数，如果没有配置，则会使用spring.application.name
+# 加载配置文件，会依次加载三个
+# 1. dataid  2. dataid.file-extension   3. dataid-${spring.profiles.active}.file-extension
+spring:
+  application:
+    name: springboot-nacos
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 10.1.1.50:8848
+        prefix: ${spring.application.name}
+        file-extension: yaml
+        group: DEFAULT_GROUP
+        namespace: 855c0a8b-ec4e-412c-a81f-dd4ff9c19cb1
+        username: nacos_test1
+        password: nacos_test1
+
