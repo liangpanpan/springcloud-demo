@@ -4,6 +4,7 @@ server:
 spring:
   application:
     name: service-consumer
+    serverName: service-provider
   cloud:
     nacos:
       discovery:
@@ -12,4 +13,44 @@ spring:
         password: nacos_test1
         group: DEFAULT_GROUP
         namespace: 855c0a8b-ec4e-412c-a81f-dd4ff9c19cb1
+
+#    openfeign:
+#      client:
+#        config:
+#          default: #全局配置
+#            connect-timeout: 3000
+#            read-timeout: 3000
+#          ${spring.application.serverName}: #指定配置
+#            connect-timeout: 5000
+#            read-timeout: 5000
+
+    httpclient:
+      hc5:
+        enabled: true
+
+    loadbalancer:
+
+      cache:
+        #启用本地缓存, 根据实际情况权衡
+        enabled: true
+        #缓存空间大小
+        capacity: 1000
+        #缓存的存活时间, 单位s
+        ttl: 2
+        #caffeine缓存的配置, 需引入caffeine依赖
+        caffeine:
+          #initialCapacity初始的缓存空间大小,expireAfterWrite最后一次写入后经过固定时间过期
+          spec: initialCapacity=500,expireAfterWrite=5s
+
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 2000
+      # 不支持引用上层的value，只能在这里再次配置
+      service-provider:
+        connectTimeout: 3000
+        readTimeout: 4000
 

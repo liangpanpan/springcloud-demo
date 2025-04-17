@@ -23,7 +23,14 @@ public class NacosProviderApplication {
 	class EchoController {
 		@RequestMapping(value = "/echo/{string}", method = RequestMethod.GET)
 		public String echo(@PathVariable String string) {
-			return "Hello Nacos Discovery " + string;
+
+            try {
+                Thread.sleep(120 * 1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            return "Hello Nacos Discovery " + string;
 		}
 	}
 }
