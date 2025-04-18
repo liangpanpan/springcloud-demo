@@ -1,0 +1,9 @@
+# Spring信息
+spring:
+  #Redis
+  redis:
+    database: 0
+    timeout: 1000
+    password: LpZy@123!
+    host: 140.143.119.132
+    port: 6379

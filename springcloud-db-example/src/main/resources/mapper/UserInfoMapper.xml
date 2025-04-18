@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.guxingyuan.mapper.UserInfoMapper">
+
+    <select id="findAll" resultType="com.guxingyuan.model.UserInfo">
+        SELECT *
+        FROM user_info
+    </select>
+
+
+    <select id="findById" resultType="com.guxingyuan.model.UserInfo">
+        SELECT *
+        FROM user_info where id = #{id}
+    </select>
+
+    <insert id="insert">
+        insert into user_info (user_name, password, real_name, email, phone, state, user_role, is_active)
+        value (#{userName},#{password}, #{realName}, #{email}, #{phone}, #{state}, #{userRole}, #{isActive})
+    </insert>
+
+    <update id="update">
+        update user_info
+        set user_name = #{userName}, real_name = #{realName}, email = #{email}, phone = #{phone}, state = #{state}, user_role = #{userRole}, is_active = #{isActive}
+        where id = #{id}
+    </update>
+
+    <update id="updatePassword">
+        update user_info
+        set password = #{password}
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from user_info where id = #{id}
+    </delete>
+
+</mapper>

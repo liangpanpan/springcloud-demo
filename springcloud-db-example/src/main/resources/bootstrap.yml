@@ -1,0 +1,41 @@
+server:
+  port: 8090
+
+# 配置
+spring:
+  application:
+    name: springcloud_all_example1
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.1.1.50:8848
+        username: nacos_test1
+        password: nacos_test1
+        group: DEFAULT_GROUP
+        namespace: 855c0a8b-ec4e-412c-a81f-dd4ff9c19cb1
+
+      config:
+        server-addr: 10.1.1.50:8848
+        namespace: 855c0a8b-ec4e-412c-a81f-dd4ff9c19cb1
+        username: nacos_test1
+        password: nacos_test1
+        prefix: ${spring.application.name}
+        file-extension: yaml
+        group: DEFAULT_GROUP
+
+        shared-configs[0]:
+          data-id: example-config-db.yaml
+          group: DEFAULT_GROUP
+          refresh: true
+
+        shared-configs[1]:
+          data-id: example-config-redis.yaml
+          group: DEFAULT_GROUP
+          refresh: true
+
+        shared-configs[2]:
+          data-id: springcloud_all_example.yaml
+          group: DEFAULT_GROUP
+          refresh: true

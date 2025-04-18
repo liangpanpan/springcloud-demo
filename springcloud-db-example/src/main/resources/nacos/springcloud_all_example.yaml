@@ -1,0 +1,10 @@
+guxingyuan:
+    custom:
+        id: 123
+        name: panpanliang
+        max_update_password_num: 2
+spring:
+  jackson:
+    # 当前配置，可以修改mvc返回用户中的date格式
+    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8    # 设置上该项后，返回的时间会再加上8小时
