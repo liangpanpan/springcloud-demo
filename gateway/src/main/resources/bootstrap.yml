@@ -1,0 +1,28 @@
+# ============================== application.yml ============================
+server:
+  port: 10010
+
+spring:
+  application:
+    name: center-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.1.1.50:8848
+        username: nacos_test1
+        password: nacos_test1
+        group: DEFAULT_GROUP
+        namespace: 855c0a8b-ec4e-412c-a81f-dd4ff9c19cb1
+
+    gateway:
+      discovery:
+        locator:
+          # 开启服务名自动映射
+          enabled: true
+      routes:
+        - id: method_route
+          uri: http://test
+          predicates:
+            - Method=GET
+
+
